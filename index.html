@@ -5,6 +5,7 @@
 <title>Happy Birthday</title>
 
 <style>
+
 body{
 margin:0;
 height:100vh;
@@ -21,12 +22,14 @@ h1{
 color:white;
 font-size:40px;
 margin-bottom:20px;
+z-index:2;
 }
 
 .cake{
 font-size:100px;
 cursor:pointer;
 transition:transform .3s;
+z-index:2;
 }
 
 .cake:hover{
@@ -45,6 +48,7 @@ font-size:20px;
 display:none;
 text-align:center;
 max-width:350px;
+z-index:2;
 }
 
 .photo{
@@ -69,10 +73,23 @@ background:red;
 animation:fall 3s linear infinite;
 }
 
+.bear{
+position:absolute;
+font-size:30px;
+opacity:0.6;
+animation:bearfall linear infinite;
+}
+
+@keyframes bearfall{
+0%{transform:translateY(-100vh) rotate(0deg);}
+100%{transform:translateY(100vh) rotate(360deg);}
+}
+
 @keyframes fall{
 0%{transform:translateY(-100vh) rotate(0deg);}
 100%{transform:translateY(100vh) rotate(360deg);}
 }
+
 </style>
 </head>
 
@@ -98,19 +115,41 @@ makasih juga udah hidup ca jangan lupa pajak ulang tahunnya 😹
 
 <script>
 
+createBears()
+
+function createBears(){
+
+for(let i=0;i<25;i++){
+
+let b=document.createElement("div")
+
+b.className="bear"
+
+b.innerHTML="🧸"
+
+b.style.left=Math.random()*100+"vw"
+
+b.style.animationDuration=(Math.random()*6+4)+"s"
+
+document.body.appendChild(b)
+
+}
+
+}
+
 function showMessage(){
-document.getElementById("msg").style.display="block";
-createConfetti();
+document.getElementById("msg").style.display="block"
+createConfetti()
 }
 
 function createConfetti(){
 for(let i=0;i<100;i++){
-let conf=document.createElement("div");
-conf.className="confetti";
-conf.style.left=Math.random()*100+"vw";
-conf.style.background="hsl("+Math.random()*360+"deg,100%,50%)";
-conf.style.animationDuration=(Math.random()*3+2)+"s";
-document.body.appendChild(conf);
+let conf=document.createElement("div")
+conf.className="confetti"
+conf.style.left=Math.random()*100+"vw"
+conf.style.background="hsl("+Math.random()*360+"deg,100%,50%)"
+conf.style.animationDuration=(Math.random()*3+2)+"s"
+document.body.appendChild(conf)
 }
 }
 
