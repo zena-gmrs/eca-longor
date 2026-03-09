@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday</title>
+
+<style>
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+font-family:sans-serif;
+overflow:hidden;
+flex-direction:column;
+}
+
+h1{
+color:white;
+font-size:40px;
+margin-bottom:20px;
+}
+
+.cake{
+font-size:100px;
+cursor:pointer;
+transition:transform .3s;
+}
+
+.cake:hover{
+transform:scale(1.2);
+}
+
+.message{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:30px;
+border-radius:20px;
+font-size:20px;
+display:none;
+text-align:center;
+}
+
+.confetti{
+position:absolute;
+width:10px;
+height:10px;
+background:red;
+animation:fall 3s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-100vh) rotate(0deg);}
+100%{transform:translateY(100vh) rotate(360deg);}
+}
+</style>
+</head>
+
+<body>
+
+<h1>Happy Birthday 🎉</h1>
+
+<div class="cake" onclick="showMessage()">🎂</div>
+
+<div class="message" id="msg">
+<h2>Selamat Ulang Tahun!</h2>
+<p>Semoga hidup lu makin waras, makin sukses,  
+dan makin tahan sama drama kehidupan 😹</p>
+</div>
+
+<script>
+
+function showMessage(){
+document.getElementById("msg").style.display="block";
+createConfetti();
+}
+
+function createConfetti(){
+for(let i=0;i<100;i++){
+let conf=document.createElement("div");
+conf.className="confetti";
+conf.style.left=Math.random()*100+"vw";
+conf.style.background="hsl("+Math.random()*360+"deg,100%,50%)";
+conf.style.animationDuration=(Math.random()*3+2)+"s";
+document.body.appendChild(conf);
+}
+}
+
+</script>
+
+</body>
+</html>
