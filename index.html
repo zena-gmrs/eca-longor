@@ -52,6 +52,13 @@ width:200px;
 border-radius:15px;
 margin-bottom:15px;
 box-shadow:0 10px 20px rgba(0,0,0,0.2);
+animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0px) rotate(0deg);}
+50%{transform:translateY(-15px) rotate(2deg);}
+100%{transform:translateY(0px) rotate(0deg);}
 }
 
 .confetti{
